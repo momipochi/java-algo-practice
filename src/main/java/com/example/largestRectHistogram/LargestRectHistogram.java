@@ -1,5 +1,8 @@
 package com.example.largestRectHistogram;
 
+// https://leetcode.com/problems/largest-rectangle-in-histogram/description/
+// Given an array of integers heights representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.
+
 public class LargestRectHistogram {
     public static int largestRectangleArea(int[] heights) {
         if (heights == null || heights.length == 0) {
