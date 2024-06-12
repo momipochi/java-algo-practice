@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Users\ander\scoop\apps\openjdk\current\bin"/>
-    <property name="sun.java.command" value="C:\Users\ander\AppData\Local\Temp\surefire1365580005689475635\surefirebooter9214193517804289170.jar C:\Users\ander\AppData\Local\Temp\surefire1365580005689475635 2024-06-12T10-45-22_126-jvmRun1 surefire7022043682655596795tmp surefire_06887254845771372565tmp"/>
+    <property name="sun.java.command" value="C:\Users\ander\AppData\Local\Temp\surefire11886086848828236475\surefirebooter15965772544126496832.jar C:\Users\ander\AppData\Local\Temp\surefire11886086848828236475 2024-06-12T11-51-52_682-jvmRun1 surefire12824528252466316034tmp surefire_03960398794196208652tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Storage\code\java-algo-practice\target\test-classes;C:\Storage\code\java-algo-practice\target\classes;C:\Users\ander\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\ander\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\ander\AppData\Local\Temp\surefire1365580005689475635\surefirebooter9214193517804289170.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\ander\AppData\Local\Temp\surefire11886086848828236475\surefirebooter15965772544126496832.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.2+13-58"/>
