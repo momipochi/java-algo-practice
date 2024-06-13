@@ -7,6 +7,12 @@ import java.util.List;
 
 // Given an integer array nums of unique elements, return all possible subsets (the power set).
 // The solution set must not contain duplicate subsets. Return the solution in any order.
+
+// https://leetcode.com/problems/subsets-ii/
+// Given an integer array nums that may contain duplicates, return all possible subsets (the power set).
+
+// The solution set must not contain duplicate subsets. Return the solution in any order.
+
 public class Subsets {
     public static List<List<Integer>> subsetsIterative(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
