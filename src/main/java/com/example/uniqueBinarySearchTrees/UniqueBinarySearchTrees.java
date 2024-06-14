@@ -1,5 +1,6 @@
 package com.example.uniqueBinarySearchTrees;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,29 +25,30 @@ public class UniqueBinarySearchTrees {
     }
 
     private static List<TreeNode> generateSubtrees(TreeNodeCoord coord, Map<TreeNodeCoord, List<TreeNode>> map) {
-        List<TreeNode> res = new LinkedList<TreeNode>();
         if (coord.s > coord.e) {
-            res.add(null); // empty tree
-            return res;
+            return new ArrayList<>() {
+                {
+                    add(null);
+                }
+            };
         }
         if (map.containsKey(coord)) {
             return map.get(coord);
         }
+        List<TreeNode> res = new ArrayList<>();
 
-        for (int i = coord.s; i <= coord.e; ++i) {
-            List<TreeNode> leftSubtrees = generateSubtrees(new TreeNodeCoord(coord.s, i - 1), map);
-            List<TreeNode> rightSubtrees = generateSubtrees(new TreeNodeCoord(i + 1, coord.e), map);
-
-            for (TreeNode left : leftSubtrees) {
-                for (TreeNode right : rightSubtrees) {
-                    TreeNode root = new TreeNode(i);
-                    root.left = left;
-                    root.right = right;
-                    res.add(root);
+        for (int i = coord.s; i <= coord.e; i++) {
+            List<TreeNode> left = generateSubtrees(new TreeNodeCoord(coord.s, i - 1), map);
+            List<TreeNode> right = generateSubtrees(new TreeNodeCoord(i + 1, coord.e), map);
+            for (TreeNode l : left) {
+                for (TreeNode r : right) {
+                    TreeNode node = new TreeNode(i, l, r);
+                    res.add(node);
                 }
             }
             map.putIfAbsent(coord, res);
         }
+
         return res;
     }
 
