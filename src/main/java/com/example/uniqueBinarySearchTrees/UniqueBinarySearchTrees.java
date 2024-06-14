@@ -6,20 +6,31 @@ import java.util.List;
 import com.example.classes.TreeNode;
 
 public class UniqueBinarySearchTrees {
-    public static List<TreeNode> generateTrees(int n) {
-        return generateSubtrees(1, n);
+    public static class TreeNodeCoord {
+        public int s;
+        public int e;
+
+        public TreeNodeCoord(int s, int e) {
+            this.s = s;
+            this.e = e;
+        }
     }
 
-    private static List<TreeNode> generateSubtrees(int s, int e) {
+    public static List<TreeNode> generateTrees(int n) {
+
+        return generateSubtrees(new TreeNodeCoord(1, n));
+    }
+
+    private static List<TreeNode> generateSubtrees(TreeNodeCoord coord) {
         List<TreeNode> res = new LinkedList<TreeNode>();
-        if (s > e) {
+        if (coord.s > coord.e) {
             res.add(null); // empty tree
             return res;
         }
 
-        for (int i = s; i <= e; ++i) {
-            List<TreeNode> leftSubtrees = generateSubtrees(s, i - 1);
-            List<TreeNode> rightSubtrees = generateSubtrees(i + 1, e);
+        for (int i = coord.s; i <= coord.e; ++i) {
+            List<TreeNode> leftSubtrees = generateSubtrees(new TreeNodeCoord(coord.s, i - 1));
+            List<TreeNode> rightSubtrees = generateSubtrees(new TreeNodeCoord(i + 1, coord.e));
 
             for (TreeNode left : leftSubtrees) {
                 for (TreeNode right : rightSubtrees) {
