@@ -3,8 +3,8 @@ package com.example.utils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import com.example.classes.ListNode;
+import com.example.classes.TreeNode;
 
 public class Utils {
 
@@ -32,4 +32,19 @@ public class Utils {
         }
         return a == null && b == null;
     }
+
+    public static boolean IsSameTreeNode(TreeNode a, TreeNode b) {
+        if (a == null && b == null)
+            return true;
+
+        /* 2. both non-empty -> compare them */
+        if (a != null && b != null)
+            return (a.val == b.val
+                    && IsSameTreeNode(a.left, b.left)
+                    && IsSameTreeNode(a.right, b.right));
+
+        /* 3. one empty, one not -> false */
+        return false;
+    }
+
 }

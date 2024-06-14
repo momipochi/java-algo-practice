@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Users\ander\scoop\apps\openjdk\current\bin"/>
-    <property name="sun.java.command" value="C:\Users\ander\AppData\Local\Temp\surefire15425701923565604389\surefirebooter17421006871694335045.jar C:\Users\ander\AppData\Local\Temp\surefire15425701923565604389 2024-06-13T11-43-23_370-jvmRun1 surefire7372985146012335736tmp surefire_016277654765114014127tmp"/>
+    <property name="sun.java.command" value="C:\Users\ander\AppData\Local\Temp\surefire645055022354783182\surefirebooter1331436393239850312.jar C:\Users\ander\AppData\Local\Temp\surefire645055022354783182 2024-06-14T11-05-51_995-jvmRun1 surefire14369026394729020920tmp surefire_07974821763297735230tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Storage\code\java-algo-practice\target\test-classes;C:\Storage\code\java-algo-practice\target\classes;C:\Users\ander\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\ander\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\ander\AppData\Local\Temp\surefire15425701923565604389\surefirebooter17421006871694335045.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\ander\AppData\Local\Temp\surefire645055022354783182\surefirebooter1331436393239850312.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.2+13-58"/>
@@ -50,7 +50,7 @@
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="native.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Users\ander\scoop\apps\openjdk\current\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Docker\Docker\resources\bin;C:\Users\ander\scoop\apps\maven\current\bin;C:\Users\ander\scoop\apps\nodejs\current\bin;C:\Users\ander\scoop\apps\nodejs\current;C:\Users\ander\scoop\apps\python\current\Scripts;C:\Users\ander\scoop\apps\python\current;C:\Users\ander\scoop\apps\vscode\current\bin;C:\Users\ander\go\bin;C:\Users\ander\scoop\apps\postgresql\current\bin;C:\Users\ander\scoop\apps\openjdk\current\bin;C:\Users\ander\scoop\apps\mpv\current;C:\Users\ander\scoop\apps\gcc\current\bin;C:\Users\ander\.cargo\bin;C:\Users\ander\scoop\shims;C:\Users\ander\AppData\Local\Microsoft\WindowsApps;C:\Storage\scripts\winscropts;C:\Users\ander\.dotnet\tools;C:\Users\ander\scoop\apps\git\current;."/>
+    <property name="java.library.path" value="C:\Users\ander\scoop\apps\openjdk\current\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Docker\Docker\resources\bin;C:\Users\ander\scoop\apps\vscode\current\bin;C:\Users\ander\scoop\apps\maven\current\bin;C:\Users\ander\scoop\apps\nodejs\current\bin;C:\Users\ander\scoop\apps\nodejs\current;C:\Users\ander\scoop\apps\python\current\Scripts;C:\Users\ander\scoop\apps\python\current;C:\Users\ander\go\bin;C:\Users\ander\scoop\apps\postgresql\current\bin;C:\Users\ander\scoop\apps\openjdk\current\bin;C:\Users\ander\scoop\apps\mpv\current;C:\Users\ander\scoop\apps\gcc\current\bin;C:\Users\ander\.cargo\bin;C:\Users\ander\scoop\shims;C:\Users\ander\AppData\Local\Microsoft\WindowsApps;C:\Storage\scripts\winscropts;C:\Users\ander\.dotnet\tools;C:\Users\ander\scoop\apps\git\current;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="stderr.encoding" value="Cp1252"/>
     <property name="java.vendor" value="Oracle Corporation"/>
