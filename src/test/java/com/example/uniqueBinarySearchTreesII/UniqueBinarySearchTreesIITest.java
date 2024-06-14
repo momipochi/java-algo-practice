@@ -1,4 +1,4 @@
-package com.example.uniqueBinarySearchTrees;
+package com.example.uniqueBinarySearchTreesII;
 
 import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import com.example.classes.TreeNode;
 
-public class UniqueBinarySearchTreesTest {
+public class UniqueBinarySearchTreesIITest {
     @Test
     public void testGenerateTrees() {
         List<TreeNode> cases = new ArrayList<>();
@@ -38,7 +38,7 @@ public class UniqueBinarySearchTreesTest {
         cases.add(c4);
         cases.add(c5);
 
-        List<TreeNode> ts = UniqueBinarySearchTrees.generateTrees(3);
+        List<TreeNode> ts = UniqueBinarySearchTreesII.generateTrees(3);
         for (int i = 0; i < cases.size(); i++) {
             assertEquals(cases.get(i), ts.get(i));
         }

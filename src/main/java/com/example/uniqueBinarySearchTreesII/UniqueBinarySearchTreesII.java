@@ -1,4 +1,4 @@
-package com.example.uniqueBinarySearchTrees;
+package com.example.uniqueBinarySearchTreesII;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.Map;
 
 import com.example.classes.TreeNode;
 
-public class UniqueBinarySearchTrees {
+public class UniqueBinarySearchTreesII {
     public static class TreeNodeCoord {
         public int s;
         public int e;
@@ -25,17 +25,15 @@ public class UniqueBinarySearchTrees {
     }
 
     private static List<TreeNode> generateSubtrees(TreeNodeCoord coord, Map<TreeNodeCoord, List<TreeNode>> map) {
+        List<TreeNode> res = new ArrayList<>();
         if (coord.s > coord.e) {
-            return new ArrayList<>() {
-                {
-                    add(null);
-                }
-            };
+            res.add(null);
+            return res;
         }
         if (map.containsKey(coord)) {
             return map.get(coord);
         }
-        List<TreeNode> res = new ArrayList<>();
+        
 
         for (int i = coord.s; i <= coord.e; i++) {
             List<TreeNode> left = generateSubtrees(new TreeNodeCoord(coord.s, i - 1), map);
