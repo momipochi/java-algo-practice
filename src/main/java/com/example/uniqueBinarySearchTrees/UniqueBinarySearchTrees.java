@@ -2,6 +2,7 @@ package com.example.uniqueBinarySearchTrees;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import com.example.classes.TreeNode;
 
@@ -21,16 +22,18 @@ public class UniqueBinarySearchTrees {
         return generateSubtrees(new TreeNodeCoord(1, n));
     }
 
-    private static List<TreeNode> generateSubtrees(TreeNodeCoord coord) {
+    private static List<TreeNode> generateSubtrees(TreeNodeCoord coord, Map<TreeNodeCoord, List<TreeNode>> map) {
         List<TreeNode> res = new LinkedList<TreeNode>();
         if (coord.s > coord.e) {
             res.add(null); // empty tree
             return res;
         }
-
+        if (map.containsKey(coord)) {
+            return map.get(coord);
+        }
         for (int i = coord.s; i <= coord.e; ++i) {
-            List<TreeNode> leftSubtrees = generateSubtrees(new TreeNodeCoord(coord.s, i - 1));
-            List<TreeNode> rightSubtrees = generateSubtrees(new TreeNodeCoord(i + 1, coord.e));
+            List<TreeNode> leftSubtrees = generateSubtrees(new TreeNodeCoord(coord.s, i - 1), map);
+            List<TreeNode> rightSubtrees = generateSubtrees(new TreeNodeCoord(i + 1, coord.e), map);
 
             for (TreeNode left : leftSubtrees) {
                 for (TreeNode right : rightSubtrees) {
@@ -40,6 +43,7 @@ public class UniqueBinarySearchTrees {
                     res.add(root);
                 }
             }
+            map.putIfAbsent(coord, res);
         }
         return res;
     }
