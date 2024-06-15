@@ -4,7 +4,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.example.L104_maxDepthOfBinaryTree.MaxDepthOfBinaryTree;
 import com.example.classes.TreeNode;
 
 public class MaxDepthOfBinaryTreeTest {

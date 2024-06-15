@@ -4,7 +4,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.example.L46_permutations.Permutations;
 import com.example.utils.Utils;
 
 public class PermutationsTest {

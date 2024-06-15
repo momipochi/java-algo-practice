@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.example.L84_largestRectHistogram.LargestRectHistogram;
-
 public class LargestRectHistogramTest {
 
     @Test
