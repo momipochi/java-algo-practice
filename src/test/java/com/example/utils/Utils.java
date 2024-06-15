@@ -22,6 +22,20 @@ public class Utils {
         }
     }
 
+    public static boolean Is2DListEqualTo2DArray(List<List<String>> list, String[][] arr) {
+        List<List<String>> arrList = new ArrayList<>();
+        for (String[] num : arr) {
+            List<String> tmp = Arrays.stream(num).toList();
+            arrList.add(tmp);
+        }
+        try {
+            return arrList.containsAll(list);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public static boolean IsSameListNode(ListNode a, ListNode b) {
         while (a != null && b != null) {
             if (a.val != b.val) {
