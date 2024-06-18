@@ -8,9 +8,9 @@ public class TwoSumTest {
     @Test
     public void testTwoSum() {
         TwoSum ts = new TwoSum();
-        int[] cs = new int[] { 2, 7, 11, 15 };
-        int c = 9;
-        int[] ans = new int[] { 0, 1 };
+        int[] cs = new int[] { 3, 2, 4 };
+        int c = 6;
+        int[] ans = new int[] { 1, 2 };
         assertArrayEquals(ts.twoSum(cs, c), ans);
     }
 }
