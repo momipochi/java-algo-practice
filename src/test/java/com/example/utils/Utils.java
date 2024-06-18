@@ -36,6 +36,19 @@ public class Utils {
         }
     }
 
+    public static ListNode ArrayToListNode(int[] arr) {
+        ListNode node = new ListNode();
+        node.next = new ListNode();
+        node = node.next;
+        ListNode tmp = node;
+        for (int i = 0; i < arr.length; i++) {
+            node.val = arr[i];
+            node.next = new ListNode();
+            node = node.next;
+        }
+        return tmp.next;
+    }
+
     public static boolean IsSameListNode(ListNode a, ListNode b) {
         while (a != null && b != null) {
             if (a.val != b.val) {
