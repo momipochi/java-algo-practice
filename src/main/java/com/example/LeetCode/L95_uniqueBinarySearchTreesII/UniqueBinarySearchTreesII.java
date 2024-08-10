@@ -12,26 +12,22 @@ public class UniqueBinarySearchTreesII {
     }
 
     private static List<TreeNode> generate_trees(int start, int end) {
-        List<TreeNode> all_trees = new ArrayList<>();
+        List<TreeNode> res = new ArrayList<>();
         if (start > end) {
-            all_trees.add(null);
-            return all_trees;
+            res.add(null);
+            return res;
         }
-
         for (int i = start; i <= end; i++) {
-            List<TreeNode> left_trees = generate_trees(start, i - 1);
-            List<TreeNode> right_trees = generate_trees(i + 1, end);
-
-            for (TreeNode l : left_trees) {
-                for (TreeNode r : right_trees) {
-                    TreeNode current_tree = new TreeNode(i);
-                    current_tree.left = l;
-                    current_tree.right = r;
-                    all_trees.add(current_tree);
+            List<TreeNode> left = generate_trees(start, i - 1);
+            List<TreeNode> right = generate_trees(i + 1, end);
+            for (TreeNode l : left) {
+                for (TreeNode r : right) {
+                    TreeNode tree = new TreeNode(i, l, r);
+                    res.add(tree);
                 }
             }
         }
-        return all_trees;
+        return res;
     }
 
 }
