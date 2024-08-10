@@ -9,20 +9,19 @@ import java.util.List;
 public class Combinations {
     public static List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> res = new ArrayList<>();
-        backtrack(k, 1, n, res, new ArrayList<>());
+        solution(n, k, k, new ArrayList<>(), res);
         return res;
     }
 
-    private static void backtrack(int combinationLen, int currN, int maxN, List<List<Integer>> res,
-            List<Integer> combination) {
-        if (combination.size() == combinationLen) {
-            res.add(new ArrayList<>(combination));
+    private static void solution(int n, int k, int curr, List<Integer> combinations, List<List<Integer>> res) {
+        if (combinations.size() == k) {
+            res.add(new ArrayList<>(combinations));
             return;
         }
-        for (int i = currN; i <= maxN; i++) {
-            combination.add(i);
-            backtrack(combinationLen, ++currN, maxN, res, combination);
-            combination.remove(combination.size() - 1);
+        for (int i = curr; i <= n; i++) {
+            combinations.add(i);
+            solution(n, k, ++curr, combinations, res);
+            combinations.remove(combinations.size() - 1);
         }
     }
 }
