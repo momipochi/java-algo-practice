@@ -9,24 +9,23 @@ public class Permutations {
     public static List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         boolean[] used = new boolean[nums.length];
-        rec(res, new ArrayList<>(), nums, used);
+        solution(new ArrayList<>(), res, nums, used);
         return res;
     }
 
-    private static void rec(List<List<Integer>> res, List<Integer> perm, int[] nums, boolean[] used) {
-        if (perm.size() == nums.length) {
-            res.add(new ArrayList<>(perm));
-            return;
+    private static void solution(List<Integer> permutation, List<List<Integer>> res, int[] nums, boolean[] used) {
+        if (nums.length == permutation.size()) {
+            res.add(new ArrayList<>(permutation));
         }
         for (int i = 0; i < nums.length; i++) {
             if (used[i]) {
                 continue;
             }
             used[i] = true;
-            perm.add(nums[i]);
-            rec(res, perm, nums, used);
+            permutation.add(nums[i]);
+            solution(permutation, res, nums, used);
             used[i] = false;
-            perm.remove(perm.size() - 1);
+            permutation.remove(i);
         }
     }
 }
