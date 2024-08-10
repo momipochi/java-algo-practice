@@ -8,25 +8,22 @@ import java.util.List;
 public class Permutations {
     public static List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        boolean[] used = new boolean[nums.length];
-        solution(new ArrayList<>(), res, nums, used);
+        solution(nums, res, new ArrayList<>());
         return res;
     }
 
-    private static void solution(List<Integer> permutation, List<List<Integer>> res, int[] nums, boolean[] used) {
-        if (nums.length == permutation.size()) {
-            res.add(new ArrayList<>(permutation));
-            return;
-        }
-        for (int i = 0; i < nums.length; i++) {
-            if (used[i]) {
-                continue;
+    private static void solution(int[] nums, List<List<Integer>> res, List<Integer> combination) {
+        if (combination.size() == nums.length) {
+            res.add(new ArrayList<>(combination));
+        } else {
+            for (int i = 0; i < nums.length; i++) {
+                if (combination.contains((Integer) nums[i])) {
+                    continue;
+                }
+                combination.add(nums[i]);
+                solution(nums, res, combination);
+                combination.remove(combination.size() - 1);
             }
-            used[i] = true;
-            permutation.add(nums[i]);
-            solution(permutation, res, nums, used);
-            used[i] = false;
-            permutation.remove(permutation.size() - 1);
         }
     }
 }
