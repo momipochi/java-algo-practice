@@ -16,6 +16,7 @@ public class Permutations {
     private static void solution(List<Integer> permutation, List<List<Integer>> res, int[] nums, boolean[] used) {
         if (nums.length == permutation.size()) {
             res.add(new ArrayList<>(permutation));
+            return;
         }
         for (int i = 0; i < nums.length; i++) {
             if (used[i]) {
@@ -25,7 +26,7 @@ public class Permutations {
             permutation.add(nums[i]);
             solution(permutation, res, nums, used);
             used[i] = false;
-            permutation.remove(i);
+            permutation.remove(permutation.size() - 1);
         }
     }
 }
