@@ -30,15 +30,15 @@ public class Subsets {
 
     public static List<List<Integer>> subsetsBacktrack(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        backtrack(0, nums, result, new ArrayList<>());
+        backtrack(nums, 0, new ArrayList<>(), result);
         return result;
     }
 
-    private static void backtrack(int start, int[] nums, List<List<Integer>> res, List<Integer> subset) {
+    private static void backtrack(int[] nums, int index, List<Integer> subset, List<List<Integer>> res) {
         res.add(new ArrayList<>(subset));
-        for (int i = start; i < nums.length; i++) {
+        for (int i = index; i < nums.length; i++) {
             subset.add(nums[i]);
-            backtrack(i + 1, nums, res, subset);
+            backtrack(nums, i + 1, subset, res);
             subset.remove(subset.size() - 1);
         }
     }
