@@ -2,27 +2,27 @@ package com.example.LeetCode.L200_NumberofIslands;
 
 public class NumberofIslands {
     public int numIslands(char[][] grid) {
-        int rowCount = grid.length;
-        int colCount = grid[0].length;
-        int islands = 0;
-        for (int i = 0; i < rowCount; i++) {
-            for (int j = 0; j < colCount; j++) {
+        int res = 0, row = grid.length, col = grid[0].length;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
                 if (grid[i][j] == '1') {
-                    islands++;
-                    islandSearch(grid, i, j, rowCount, colCount);
+                    res++;
+                    fixGrid(i, j, row, col, grid);
                 }
             }
         }
-        return islands;
+        return res;
     }
 
-    private void islandSearch(char[][] grid, int i, int j, int rowCount, int colCount) {
-        if (i < 0 || i >= rowCount || j < 0 || j >= colCount || grid[i][j] == '0')
+    private void fixGrid(int i, int j, int maxI, int maxJ, char[][] grid) {
+        if (i < 0 || j < 0 || i >= maxI || j >= maxJ || grid[i][j] == '0') {
             return;
+        }
         grid[i][j] = '0';
-        islandSearch(grid, i + 1, j, rowCount, colCount);
-        islandSearch(grid, i - 1, j, rowCount, colCount);
-        islandSearch(grid, i, j + 1, rowCount, colCount);
-        islandSearch(grid, i, j - 1, rowCount, colCount);
+        fixGrid(i + 1, j, maxI, maxJ, grid);
+        fixGrid(i, j + 1, maxI, maxJ, grid);
+        fixGrid(i - 1, j, maxI, maxJ, grid);
+        fixGrid(i, j - 1, maxI, maxJ, grid);
     }
+
 }
