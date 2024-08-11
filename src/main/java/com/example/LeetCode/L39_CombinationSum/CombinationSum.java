@@ -11,7 +11,7 @@ public class CombinationSum {
         return res;
     }
 
-    private void solution(int[] candidates, int target, int index, int sum, List<Integer> combination,
+    public void solution(int[] candidates, int target, int sum, int index, List<Integer> combination,
             List<List<Integer>> res) {
         if (sum == target) {
             res.add(new ArrayList<>(combination));
@@ -20,10 +20,11 @@ public class CombinationSum {
         if (sum > target || index >= candidates.length) {
             return;
         }
-        combination.add(candidates[index]);
-        solution(candidates, target, index, sum + candidates[index], combination, res);
-        combination.remove(combination.size() - 1);
-        solution(candidates, target, index + 1, sum, combination, res);
 
+        combination.add(candidates[index]);
+        solution(candidates, target, sum + candidates[index], index, combination, res);
+        combination.remove(combination.size() - 1);
+        solution(candidates, target, sum, index + 1, combination, res);
     }
+
 }
