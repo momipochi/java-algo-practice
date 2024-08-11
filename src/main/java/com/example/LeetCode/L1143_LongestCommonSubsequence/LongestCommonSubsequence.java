@@ -15,7 +15,6 @@ public class LongestCommonSubsequence {
                 }
             }
         }
-
         return grid[0][0];
     }
 
