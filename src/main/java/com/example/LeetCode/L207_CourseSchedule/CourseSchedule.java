@@ -86,25 +86,25 @@ public class CourseSchedule {
     }
 
     public boolean canFinishFurtherOptimized(int numCourses, int[][] prerequisites) {
+        int length = prerequisites.length;
         int[] req = new int[numCourses];
         for (int i = 0; i < prerequisites.length; i++) {
-            req[prerequisites[i][1]]++;
+            req[prerequisites[i][0]]++;
         }
-        int length = prerequisites.length;
-        boolean[] visited = new boolean[length];
         boolean run = true;
-        while (run) {
+        boolean[] visited = new boolean[length];
+        while(run) {
             run = false;
             for (int i = 0; i < length; i++) {
-                if (!visited[i] && req[prerequisites[i][0]] == 0) {
-                    run = true;
-                    req[prerequisites[i][1]]--;
+                if(!visited[i] && req[prerequisites[i][1]] == 0){
                     visited[i] = true;
+                    req[prerequisites[i][0]]--;
+                    run = true;
                 }
             }
         }
-        for (int i = 0; i < numCourses; i++) {
-            if (req[i] != 0) {
+        for (int i = 0; i < req.length; i++) {
+            if(req[i] != 0){
                 return false;
             }
         }
