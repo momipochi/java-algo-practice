@@ -11,6 +11,7 @@ import com.example.classes.TreeNode;
 public class UniqueBinarySearchTreesIITest {
     @Test
     public void testGenerateTrees() {
+        
         List<TreeNode> cases = new ArrayList<>();
         TreeNode c1 = new TreeNode(1);
         c1.right = new TreeNode(2);
