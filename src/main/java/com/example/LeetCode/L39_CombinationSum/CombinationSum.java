@@ -7,24 +7,23 @@ import java.util.List;
 public class CombinationSum {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<>();
-        solution(candidates, target, 0, 0, new ArrayList<>(), res);
+        solution(target, 0, 0, candidates, new ArrayList<>(), res);
         return res;
     }
 
-    public void solution(int[] candidates, int target, int sum, int index, List<Integer> combination,
+    public void solution(int target, int sum, int index, int[] candidates, List<Integer> combinations,
             List<List<Integer>> res) {
-        if (sum == target) {
-            res.add(new ArrayList<>(combination));
+        if (target == sum) {
+            res.add(new ArrayList<>(combinations));
             return;
         }
         if (sum > target || index >= candidates.length) {
             return;
         }
 
-        combination.add(candidates[index]);
-        solution(candidates, target, sum + candidates[index], index, combination, res);
-        combination.remove(combination.size() - 1);
-        solution(candidates, target, sum, index + 1, combination, res);
+        combinations.add(candidates[index]);
+        solution(target, sum + candidates[index], index, candidates, combinations, res);
+        combinations.remove(combinations.size() - 1);
+        solution(target, sum, index + 1, candidates, combinations, res);
     }
-
 }
