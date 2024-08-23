@@ -9,6 +9,6 @@ public class LongestIncreasingPathInMatrixTest {
     public void testLongestIncreasingPath() {
         int[][] matrix = new int[][] { { 9, 9, 4 }, { 6, 6, 8 }, { 2, 1, 1 } };
         LongestIncreasingPathInMatrix l = new LongestIncreasingPathInMatrix();
-        assertEquals(4, l.longestIncreasingPathNaive(matrix));
+        assertEquals(4, l.longestIncreasingPath(matrix));
     }
 }
