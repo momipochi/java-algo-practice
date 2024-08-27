@@ -36,29 +36,28 @@ public class LongestIncreasingPathInMatrix {
         dp = new int[matrix.length + 1][matrix[0].length + 1];
         int res = 0;
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                res = Math.max(dfs(matrix, i, j, Integer.MIN_VALUE), res);
+            for (int j = 0; j < matrix[i].length; j++) {
+                res = Math.max(dfs(i, j, Integer.MIN_VALUE, matrix), res);
             }
         }
-
         return res;
     }
 
-    public int dfs(int[][] matrix, int i, int j, int prevVal) {
-        if (i < 0 || i >= matrix.length || j < 0 || j >= matrix[0].length || matrix[i][j] <= prevVal) {
+    private int dfs(int x, int y, int prev, int[][] matrix) {
+        if (x < 0 || y < 0 || x >= matrix.length || y >= matrix[0].length || prev >= matrix[x][y]) {
             return 0;
         }
-
-        if (dp[i][j] != 0) {
-            return dp[i][j];
+        if (dp[x][y] != 0) {
+            return dp[x][y];
         }
-        int temp = 0;
-        int curr = matrix[i][j];
-        temp = Math.max(temp, dfs(matrix, i + 1, j, curr));
-        temp = Math.max(temp, dfs(matrix, i - 1, j, curr));
-        temp = Math.max(temp, dfs(matrix, i, j + 1, curr));
-        temp = Math.max(temp, dfs(matrix, i, j - 1, curr));
 
-        return dp[i][j] = ++temp;
+        int tmp = 0;
+        int curr = matrix[x][y];
+        tmp = Math.max(dfs(x + 1, y, curr, matrix), tmp);
+        tmp = Math.max(dfs(x - 1, y, curr, matrix), tmp);
+        tmp = Math.max(dfs(x, y + 1, curr, matrix), tmp);
+        tmp = Math.max(dfs(x, y - 1, curr, matrix), tmp);
+
+        return dp[x][y] = ++tmp;
     }
 }
