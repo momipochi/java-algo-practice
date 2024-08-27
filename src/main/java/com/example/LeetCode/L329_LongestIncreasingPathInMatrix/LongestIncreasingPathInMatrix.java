@@ -1,5 +1,6 @@
 package com.example.LeetCode.L329_LongestIncreasingPathInMatrix;
 
+// https://leetcode.com/problems/longest-increasing-path-in-a-matrix/description/
 public class LongestIncreasingPathInMatrix {
     public int longestIncreasingPathNaive(int[][] matrix) {
         int max = 0;
