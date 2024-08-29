@@ -7,6 +7,13 @@ import com.example.classes.ListNode;
 import com.example.classes.TreeNode;
 
 public class Utils {
+    public static <T> List<List<T>> twoDimensionalArrayToList(T[][] arr) {
+        List<List<T>> list = new ArrayList<>();
+        for (T[] array : arr) {
+            list.add(Arrays.asList(array));
+        }
+        return list;
+    }
 
     public static boolean Is2DListEqualTo2DArray(List<List<Integer>> list, int[][] arr) {
         List<List<Integer>> arrList = new ArrayList<>();
