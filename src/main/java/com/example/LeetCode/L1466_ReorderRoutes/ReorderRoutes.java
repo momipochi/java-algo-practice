@@ -20,43 +20,41 @@ package com.example.LeetCode.L1466_ReorderRoutes;
  */
 
 public class ReorderRoutes {
-    public int count = 0;
-    boolean[] reachable;
+    boolean[] visited;
+    int count = 0;
 
     public int minReorder(int n, int[][] connections) {
-        reachable = new boolean[connections.length + 1];
-        reachable[0] = true;
-
+        visited = new boolean[n + 1];
+        visited[0] = true;
         for (int i = 0; i < n; i++) {
-            compute(i, connections);
+            search(i, connections);
         }
         return count;
-
     }
 
-    public void compute(int currentEdge, int[][] connections) {
-        if (currentEdge >= connections.length)
-            return;
-        int u = connections[currentEdge][0];
-        int v = connections[currentEdge][1];
-        if (reachable[v]) {
-            reachable[u] = true;
+    private void search(int city, int[][] connections) {
+        if (city >= connections.length) {
             return;
         }
-        if (reachable[u]) {
+        int from = connections[city][0], to = connections[city][1];
+        if (visited[to]) {
+            visited[from] = true;
+            return;
+        }
+        if (visited[from]) {
             count++;
-            reachable[v] = true;
+            visited[to] = true;
         } else {
-            compute(currentEdge + 1, connections);
-            if (reachable[v]) {
-                reachable[u] = true;
+            search(city + 1, connections);
+            if (visited[to]) {
+                visited[from] = true;
                 return;
             }
-            if (reachable[u]) {
+            if (visited[from]) {
                 count++;
-                reachable[v] = true;
+                visited[to] = true;
             }
         }
-
     }
+
 }
