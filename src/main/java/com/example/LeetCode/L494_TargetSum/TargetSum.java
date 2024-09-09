@@ -3,7 +3,7 @@ package com.example.LeetCode.L494_TargetSum;
 // https://leetcode.com/problems/target-sum/description/
 
 /*
- * The most optimized way is to use tabulation to get the answer.
+ * The most optimized way is to use tabulation to get the answer. 
  */
 
 public class TargetSum {
