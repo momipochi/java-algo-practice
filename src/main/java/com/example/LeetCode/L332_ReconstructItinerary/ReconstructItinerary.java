@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 // https://leetcode.com/problems/reconstruct-itinerary/description/
 /*
@@ -18,30 +19,28 @@ import java.util.Map;
  */
 
 public class ReconstructItinerary {
-    Map<String, List<String>> map = new HashMap<>();
-    LinkedList<String> res = new LinkedList<>();
+    Map<String, PriorityQueue<String>> map;
+    List<String> res;
 
     public List<String> findItinerary(List<List<String>> tickets) {
-
+        map = new HashMap<>();
         for (List<String> list : tickets) {
-            map.putIfAbsent(list.get(0), new ArrayList<>());
+            map.putIfAbsent(list.get(0), new PriorityQueue<>());
             map.get(list.get(0)).add(list.get(1));
         }
-
-        solution("JFK");
-        return res;
+        res = new ArrayList<String>();
+        solve("JFK");
+        return new ArrayList<>(res);
     }
 
-    private void solution(String from) {
-        List<String> nexts = map.get(from);
-        if (nexts != null) {
-            nexts.sort((a, b) -> a.compareTo(b));
-            while (nexts.size() != 0) {
-                String nextFrom = nexts.get(0);
-                nexts.remove(0);
-                solution(nextFrom);
+    private void solve(String src) {
+        PriorityQueue<String> current = map.get(src);
+        if (current != null) {
+            while (current.size() != 0) {
+                String c = current.poll();
+                solve(c);
             }
         }
-        res.addFirst(from);
+        res.add(0, src);
     }
 }
