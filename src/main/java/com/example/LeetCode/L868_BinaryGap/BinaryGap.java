@@ -8,11 +8,11 @@ package com.example.LeetCode.L868_BinaryGap;
  */
 public class BinaryGap {
     public int binaryGap(int n) {
-        int max = 0, lastPos = -1, index = 0;
+        int max = 0, index = 0, lastPos = -1;
         while (n > 0) {
-            int last = n & 1;
+            int and = n & 1;
             index++;
-            if (last == 1) {
+            if (and == 1) {
                 if (lastPos != -1) {
                     max = Math.max(max, index - lastPos);
                 }
@@ -20,6 +20,6 @@ public class BinaryGap {
             }
             n >>= 1;
         }
-        return max;
+        return 1;
     }
 }
