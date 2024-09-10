@@ -18,11 +18,11 @@ package com.example.LeetCode.L1143_LongestCommonSubsequence;
 
 public class LongestCommonSubsequence {
     public int longestCommonSubsequence(String text1, String text2) {
-        int l = text1.length(), r = text2.length();
         char[] t1 = text1.toCharArray(), t2 = text2.toCharArray();
-        int[][] grid = new int[l + 1][r + 1];
-        for (int i = l - 1; i >= 0; i--) {
-            for (int j = r - 1; j >= 0; j--) {
+        int x = t1.length, y = t2.length;
+        int[][] grid = new int[x + 1][y + 1];
+        for (int i = x - 1; i >= 0; i--) {
+            for (int j = y - 1; j >= 0; j--) {
                 if (t1[i] == t2[j]) {
                     grid[i][j] = grid[i + 1][j + 1] + 1;
                 } else {
