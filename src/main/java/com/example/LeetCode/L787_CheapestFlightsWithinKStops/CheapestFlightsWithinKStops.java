@@ -18,25 +18,26 @@ import java.util.Arrays;
  */
 
 public class CheapestFlightsWithinKStops {
+
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
-        int[] dest = new int[n];
-        Arrays.fill(dest, Integer.MAX_VALUE);
-        dest[src] = 0;
+        int[] track = new int[n];
+        Arrays.fill(track, Integer.MAX_VALUE);
+        track[src] = 0;
         for (int i = 0; i <= k; i++) {
-            if (!existsRoute(dest, flights)) {
+            if (!check(track, flights)) {
                 break;
             }
         }
-        return dest[dst] == Integer.MAX_VALUE ? -1 : dest[dst];
+        return track[src] == Integer.MAX_VALUE ? -1 : track[dst];
     }
 
-    private boolean existsRoute(int[] dest, int[][] flights) {
-        int[] copy = Arrays.copyOf(dest, dest.length);
+    private boolean check(int[] track, int[][] flights) {
+        int[] copy = Arrays.copyOf(track, track.length);
         boolean found = false;
         for (int[] flight : flights) {
             int price = flight[2] + copy[flight[0]];
-            if (copy[flight[0]] != Integer.MAX_VALUE && dest[flight[1]] > price) {
-                dest[flight[1]] = price;
+            if (copy[flight[0]] != Integer.MAX_VALUE && track[flight[1]] > price) {
+                track[flight[1]] = price;
                 found = true;
             }
         }
