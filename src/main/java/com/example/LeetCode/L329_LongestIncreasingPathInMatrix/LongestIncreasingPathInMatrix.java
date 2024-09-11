@@ -30,6 +30,16 @@ public class LongestIncreasingPathInMatrix {
 
     }
 
+    /*
+     * The best way is to use tabulation in this case, meaning we need a collection that is 1 size larger than the matrix.
+     * With that collection, we simply need to increment each index and return it.
+     * Since we want to get the LONGEST increasing path, this means that the function most likely needs to return a value
+     * for us to pick between the current and the previous. By the nature of the task, there is no way to loop around on itself
+     * because by the time you loop around, the previous numbers would be too small so they won't be picked. That being said,
+     * we still need to prevent going backwards, otherwise the function would be stuck in an infinite loop. Therefore it is
+     * necessary to check if the previous value matches our condition, aka is it greater or not.
+     */
+
     int[][] dp;
 
     public int longestIncreasingPath(int[][] matrix) {
