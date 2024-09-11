@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
+// https://leetcode.com/problems/course-schedule/description/
+
 public class CourseSchedule {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         Map<Integer, List<Integer>> map = new HashMap<>();
@@ -87,25 +89,29 @@ public class CourseSchedule {
     }
 
     public boolean canFinishFurtherOptimized(int numCourses, int[][] prerequisites) {
-        int length = prerequisites.length;
-        int[] req = new int[numCourses];
-        for (int i = 0; i < prerequisites.length; i++) {
-            req[prerequisites[i][0]]++;
+        int[] indeg = new int[numCourses];
+        int p = prerequisites.length;
+        for (int[] arr : prerequisites) {
+            indeg[arr[1]]++;
         }
-        boolean run = true;
-        boolean[] visited = new boolean[length];
-        while(run) {
-            run = false;
-            for (int i = 0; i < length; i++) {
-                if(!visited[i] && req[prerequisites[i][1]] == 0){
+
+        boolean[] visited = new boolean[p];
+
+        boolean found = true;
+
+        while (found) {
+            found = false;
+            for (int i = 0; i < p; i++) {
+                if (!visited[i] && indeg[prerequisites[i][0]] == 0) {
                     visited[i] = true;
-                    req[prerequisites[i][0]]--;
-                    run = true;
+                    indeg[prerequisites[i][1]]--;
+                    found = true;
                 }
             }
         }
-        for (int i = 0; i < req.length; i++) {
-            if(req[i] != 0){
+
+        for (int ele : indeg) {
+            if (ele != 0) {
                 return false;
             }
         }
