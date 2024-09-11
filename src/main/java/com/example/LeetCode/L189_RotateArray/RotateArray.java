@@ -21,11 +21,12 @@ public class RotateArray {
 
     private void reverse(int[] nums, int start, int end) {
         while (start < end) {
-            int tmp = nums[start];
-            nums[start] = nums[end];
-            nums[end] = tmp;
+            int tmp = nums[end];
+            nums[end] = nums[start];
+            nums[start] = tmp;
             start++;
             end--;
         }
     }
+
 }
