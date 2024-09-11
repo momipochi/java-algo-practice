@@ -11,6 +11,17 @@ import java.util.Set;
 
 // https://leetcode.com/problems/course-schedule/description/
 
+/*
+ * The algorithm is simple, using an array we can keep a track of each lessons and how many
+ * times they appear as required lessons, index[i][1]. Once we have it, it is a matter of
+ * checking every prerequisites repeatedly until all lessons have been checked or there are
+ * no longer any lessons in the tracking array that need to be decremented.
+ * It is best to use a while loop for this because we need to loop repeatedly from 0 to the last lesson.
+ * At the end we just check if all the tracking lessons have become 0, if there is a prerequisite lesson
+ * that didnt reach 0, this means the lesson hasnt been or couldnt have been taken, at which point we
+ * return false, otherwise we do nothing and in the end the function returns true.
+ */
+
 public class CourseSchedule {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         Map<Integer, List<Integer>> map = new HashMap<>();
