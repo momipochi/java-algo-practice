@@ -11,5 +11,7 @@ public class CourseScheduleTest {
         int course = 2;
         int[][] req = new int[][] { { 1, 0 }, { 0, 1 } };
         assertTrue(!cs.canFinishFurtherOptimized(course, req));
+        req = new int[][] { { 1, 0 } };
+        assertTrue(cs.canFinishFurtherOptimized(course, req));
     }
 }
