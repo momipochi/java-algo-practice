@@ -109,7 +109,7 @@ public class CourseSchedule {
         while (found) {
             found = false;
             for (int i = 0; i < prerequisites.length; i++) {
-                if (!visited[i] && req[prerequisites[i][0]] != 0) {
+                if (!visited[i] && req[prerequisites[i][0]] == 0) {
                     visited[i] = true;
                     req[prerequisites[i][1]]--;
                     found = true;
