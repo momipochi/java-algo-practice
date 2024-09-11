@@ -47,6 +47,7 @@ public class CourseSchedule {
     }
 
     public boolean canFinishOptimized(int n, int[][] prerequisites) {
+        @SuppressWarnings("unchecked")
         List<Integer>[] adj = new List[n];
         int[] indegree = new int[n];
         List<Integer> ans = new ArrayList<>();
