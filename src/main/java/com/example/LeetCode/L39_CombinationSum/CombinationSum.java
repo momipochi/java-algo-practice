@@ -12,28 +12,32 @@ import java.util.List;
  * 
  * If everything is find, aka the index is not faulty, we can run backtrack on it,
  * as well as index+1. However, we don't need to backtrack index+1.
+ * Keep in mind that backtracking for index requires sum+candidates[index],
+ * where as backtracking for index+1 doesn't require it. This is because
+ * we need to check if element at index could be used multiple times to add up
+ * to the target. Also, we need to move to the next index at some point.
  */
 
 public class CombinationSum {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<>();
-        solution(target, 0, 0, candidates, new ArrayList<>(), res);
+        solution(0, 0, target, candidates, new ArrayList<>(), res);
         return res;
     }
 
-    public void solution(int target, int sum, int index, int[] candidates, List<Integer> combinations,
+    private void solution(int sum, int index, int target, int[] candidates, List<Integer> combinations,
             List<List<Integer>> res) {
-        if (target == sum) {
+        if (sum == target) {
             res.add(new ArrayList<>(combinations));
             return;
         }
-        if (sum > target || index >= candidates.length) {
+        if (index >= candidates.length || sum > target) {
             return;
         }
 
         combinations.add(candidates[index]);
-        solution(target, sum + candidates[index], index, candidates, combinations, res);
+        solution(sum + candidates[index], index, target, candidates, combinations, res);
         combinations.remove(combinations.size() - 1);
-        solution(target, sum, index + 1, candidates, combinations, res);
+        solution(sum, index + 1, target, candidates, combinations, res);
     }
 }
