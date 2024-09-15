@@ -4,6 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 // https://leetcode.com/problems/combination-sum/description/
+
+/*
+ * The idea is simple, use backtracking to reach the answer.
+ * If the sum is equal to the target we can add the result and return.
+ * If the sum or index is faulty we return.
+ * 
+ * If everything is find, aka the index is not faulty, we can run backtrack on it,
+ * as well as index+1. However, we don't need to backtrack index+1.
+ */
+
 public class CombinationSum {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<>();
