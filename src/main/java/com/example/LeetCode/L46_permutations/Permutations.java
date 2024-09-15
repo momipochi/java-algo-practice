@@ -14,13 +14,13 @@ import java.util.List;
  */
 
 public class Permutations {
-    public static List<List<Integer>> permute(int[] nums) {
+    public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        solution(nums, new ArrayList<>(), res);
+        solution(res, new ArrayList<>(), nums);
         return res;
     }
 
-    private static void solution(int[] nums, List<Integer> permutations, List<List<Integer>> res) {
+    private void solution(List<List<Integer>> res, List<Integer> permutations, int[] nums) {
         if (permutations.size() == nums.length) {
             res.add(new ArrayList<>(permutations));
             return;
@@ -30,7 +30,7 @@ public class Permutations {
                 continue;
             }
             permutations.add(nums[i]);
-            solution(nums, permutations, res);
+            solution(res, permutations, nums);
             permutations.remove(permutations.size() - 1);
         }
     }

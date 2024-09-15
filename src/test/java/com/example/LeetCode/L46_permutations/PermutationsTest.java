@@ -13,8 +13,9 @@ public class PermutationsTest {
         int[][][] ans = new int[][][] {
                 { { 1, 2, 3 }, { 1, 3, 2 }, { 2, 1, 3 }, { 2, 3, 1 }, { 3, 1, 2 }, { 3, 2, 1 } } };
 
+        Permutations p = new Permutations();
         for (int i = 0; i < ans.length; i++) {
-            assertTrue(Utils.Is2DListEqualTo2DArray(Permutations.permute(cases[i]), ans[i]));
+            assertTrue(Utils.Is2DListEqualTo2DArray(p.permute(cases[i]), ans[i]));
         }
     }
 
