@@ -5,6 +5,14 @@ import java.util.List;
 
 //https://leetcode.com/problems/permutations/description/
 //Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
+
+/*
+ * A simple dfs would do the work. Keep in mind that the definition of permutation is to find
+ * combinations of numbers such that all numbers are used but their index is different and unique.
+ * This means you need to iterate over the entire array and check before backtracking whether
+ * and element exists already, so that you skip it. This will by design create all permutations.
+ */
+
 public class Permutations {
     public static List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
