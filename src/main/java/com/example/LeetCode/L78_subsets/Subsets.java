@@ -13,6 +13,16 @@ import java.util.List;
 
 // The solution set must not contain duplicate subsets. Return the solution in any order.
 
+/*
+ * For simple backtrack, it is similar to combinations, however, you don't care about returning,
+ * once the loop ends you will reach your answer, just need to add subset to result at the start
+ * for the recursion function.
+ * 
+ * For iterative approach, we simply need to loop through the nums and use result's size as the
+ * condition for the nested loop. Create a list withing the nested loop with the element
+ * in the result collection at current index, append current num and add it back to result.
+ */
+
 public class Subsets {
     public static List<List<Integer>> subsetsIterative(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
