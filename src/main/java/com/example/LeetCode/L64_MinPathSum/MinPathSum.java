@@ -17,9 +17,8 @@ public class MinPathSum {
     int[][] tab;
 
     public int minPathSum(int[][] grid) {
-        int row = grid.length, col = grid[0].length;
-        tab = new int[row + 1][col + 1];
-        return find(row - 1, col - 1, grid);
+        tab = new int[grid.length + 1][grid[0].length + 1];
+        return find(grid.length - 1, grid[0].length - 1, grid);
     }
 
     private int find(int i, int j, int[][] grid) {
@@ -31,7 +30,6 @@ public class MinPathSum {
             return tab[i][j];
         }
         return tab[i][j] = grid[i][j] + Math.min(find(i - 1, j, grid), find(i, j - 1, grid));
-
     }
 
     public int minPathSumFromZero(int[][] grid) {
