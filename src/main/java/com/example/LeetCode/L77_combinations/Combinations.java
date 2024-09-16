@@ -17,13 +17,13 @@ import java.util.List;
  */
 
 public class Combinations {
-    public static List<List<Integer>> combine(int n, int k) {
+    public List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> res = new ArrayList<>();
         solution(n, k, 1, new ArrayList<>(), res);
         return res;
     }
 
-    private static void solution(int n, int k, int index, List<Integer> combinations, List<List<Integer>> res) {
+    private void solution(int n, int k, int index, List<Integer> combinations, List<List<Integer>> res) {
         if (combinations.size() == k) {
             res.add(new ArrayList<>(combinations));
             return;

@@ -12,8 +12,9 @@ public class CombinationsTest {
     public void test() {
         int[][] cases = new int[][] { { 4, 2 } };
         int[][][] ans = new int[][][] { { { 1, 2 }, { 1, 3 }, { 1, 4 }, { 2, 3 }, { 2, 4 }, { 3, 4 } } };
+        Combinations c = new Combinations();
         for (int i = 0; i < cases.length; i++) {
-            assertTrue(Utils.Is2DListEqualTo2DArray(Combinations.combine(cases[i][0], cases[i][1]), ans[i]));
+            assertTrue(Utils.Is2DListEqualTo2DArray(c.combine(cases[i][0], cases[i][1]), ans[i]));
         }
     }
 }
