@@ -14,26 +14,27 @@ public class JumpGameII {
     int ans = 0;
 
     public int jump(int[] nums) {
+
         int i = 0;
-        while (i < nums.length - 1) {
+        while (nums.length - 1 > i) {
             i = helper(i, nums[i], nums);
         }
         return ans;
     }
 
-    public int helper(int a, int b, int[] nums) {
+    private int helper(int a, int b, int[] nums) {
         ans++;
         if (a + b >= nums.length - 1) {
             return nums.length;
         }
-        int max = Integer.MIN_VALUE;
-        int temp = 0;
+        int max = 0, tmp = 0;
         for (int i = a; i <= a + b; i++) {
-            if (nums[i] + i >= max) {
-                temp = i;
-                max = nums[i] + i;
+            int currMax = nums[i] + i;
+            if (currMax >= max) {
+                tmp = i;
+                max = currMax;
             }
         }
-        return temp;
+        return tmp;
     }
 }
