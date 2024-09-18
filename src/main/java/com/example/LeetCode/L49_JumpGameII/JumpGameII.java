@@ -14,9 +14,8 @@ public class JumpGameII {
     int ans = 0;
 
     public int jump(int[] nums) {
-
         int i = 0;
-        while (nums.length - 1 > i) {
+        while (i < nums.length - 1) {
             i = helper(i, nums[i], nums);
         }
         return ans;
@@ -27,14 +26,15 @@ public class JumpGameII {
         if (a + b >= nums.length - 1) {
             return nums.length;
         }
-        int max = 0, tmp = 0;
+        int max = 0, maxPos = 0;
         for (int i = a; i <= a + b; i++) {
             int currMax = nums[i] + i;
             if (currMax >= max) {
-                tmp = i;
                 max = currMax;
+                maxPos = i;
             }
         }
-        return tmp;
+        return maxPos;
     }
+
 }
