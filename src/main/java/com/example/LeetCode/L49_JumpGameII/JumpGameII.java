@@ -11,6 +11,7 @@ package com.example.LeetCode.L49_JumpGameII;
  */
 
 public class JumpGameII {
+
     int ans = 0;
 
     public int jump(int[] nums) {
@@ -26,10 +27,10 @@ public class JumpGameII {
         if (a + b >= nums.length - 1) {
             return nums.length;
         }
-        int max = 0, maxPos = 0;
+        int maxPos = 0, max = 0;
         for (int i = a; i <= a + b; i++) {
-            int currMax = nums[i] + i;
-            if (currMax >= max) {
+            int currMax = i + nums[i];
+            if (currMax > max) {
                 max = currMax;
                 maxPos = i;
             }
