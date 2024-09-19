@@ -22,12 +22,12 @@ public class MergeIntervals {
         Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
         int[] prev = intervals[0];
         List<int[]> res = new ArrayList<>();
-        for (int i = 0; i < intervals.length; i++) {
+        for (int i = 1; i < intervals.length; i++) {
             if (prev[1] < intervals[i][0]) {
                 res.add(prev);
                 prev = intervals[i];
             } else {
-                prev[1] = prev[1] < intervals[i][1] ? intervals[i][1] : prev[1];
+                prev[1] = prev[1] > intervals[i][1] ? prev[1] : intervals[i][1];
             }
         }
         res.add(prev);
