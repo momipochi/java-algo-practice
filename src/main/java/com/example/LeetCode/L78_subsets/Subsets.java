@@ -26,12 +26,12 @@ import java.util.List;
 public class Subsets {
     public static List<List<Integer>> subsetsIterative(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        result.add(new ArrayList<>()); // Add the empty subset
-        for (int num : nums) {
+        result.add(new ArrayList<>());
+        for (int i = 0; i < nums.length; i++) {
             int size = result.size();
-            for (int i = 0; i < size; i++) {
-                List<Integer> subset = new ArrayList<>(result.get(i));
-                subset.add(num);
+            for (int j = 0; j < size; j++) {
+                List<Integer> subset = new ArrayList<>(result.get(j));
+                subset.add(nums[i]);
                 result.add(subset);
             }
         }
@@ -40,16 +40,16 @@ public class Subsets {
 
     public static List<List<Integer>> subsetsBacktrack(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        backtrack(nums, 0, new ArrayList<>(), result);
+        solution(0, nums, new ArrayList<>(), result);
         return result;
     }
 
-    private static void backtrack(int[] nums, int index, List<Integer> subset, List<List<Integer>> res) {
-        res.add(new ArrayList<>(subset));
-        for (int i = index; i < nums.length; i++) {
-            subset.add(nums[i]);
-            backtrack(nums, i + 1, subset, res);
-            subset.remove(subset.size() - 1);
+    private static void solution(int start, int[] nums, List<Integer> subsets, List<List<Integer>> res) {
+        res.add(new ArrayList<>(subsets));
+        for (int i = start; i < nums.length; i++) {
+            subsets.add(nums[i]);
+            solution(i + 1, nums, subsets, res);
+            subsets.remove(subsets.size() - 1);
         }
     }
 
