@@ -19,19 +19,19 @@ import java.util.List;
 public class Combinations {
     public List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> res = new ArrayList<>();
-        solution(n, k, 1, new ArrayList<>(), res);
+        helper(1, n, k, new ArrayList<>(), res);
         return res;
     }
 
-    private void solution(int n, int k, int index, List<Integer> combinations, List<List<Integer>> res) {
-        if (combinations.size() == k) {
-            res.add(new ArrayList<>(combinations));
+    private void helper(int start, int n, int k, List<Integer> comb, List<List<Integer>> res) {
+        if (comb.size() == k) {
+            res.add(new ArrayList<>(comb));
             return;
         }
-        for (int i = index; i <= n; i++) {
-            combinations.add(i);
-            solution(n, k, i + 1, combinations, res);
-            combinations.remove(combinations.size() - 1);
+        for (int i = start; i <= n; i++) {
+            comb.add(i);
+            helper(i + 1, n, k, comb, res);
+            comb.remove(comb.size() - 1);
         }
     }
 
