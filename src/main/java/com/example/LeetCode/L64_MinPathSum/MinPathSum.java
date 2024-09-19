@@ -18,18 +18,18 @@ public class MinPathSum {
 
     public int minPathSum(int[][] grid) {
         tab = new int[grid.length + 1][grid[0].length + 1];
-        return find(grid.length - 1, grid[0].length - 1, grid);
+        return helper(grid.length - 1, grid[0].length - 1, grid);
     }
 
-    private int find(int i, int j, int[][] grid) {
-        if (i == 0 && j == 0) {
-            return grid[i][j];
-        } else if (i < 0 || j < 0) {
+    private int helper(int x, int y, int[][] grid) {
+        if (x == 0 && y == 0) {
+            return grid[x][y];
+        } else if (x < 0 || y < 0) {
             return Integer.MAX_VALUE;
-        } else if (tab[i][j] != 0) {
-            return tab[i][j];
+        } else if (tab[x][y] != 0) {
+            return tab[x][y];
         }
-        return tab[i][j] = grid[i][j] + Math.min(find(i - 1, j, grid), find(i, j - 1, grid));
+        return tab[x][y] = grid[x][y] + Math.min(helper(x - 1, y, grid), helper(x, y - 1, grid));
     }
 
     public int minPathSumFromZero(int[][] grid) {
