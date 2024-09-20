@@ -19,13 +19,12 @@ public class RotateArray {
         reverse(nums, k, nums.length - 1);
     }
 
-    private void reverse(int[] nums, int start, int end) {
-        while (start < end) {
-            int tmp = nums[end];
-            nums[end] = nums[start];
-            nums[start] = tmp;
-            start++;
-            end--;
+    private void reverse(int[] nums, int from, int to) {
+        for (int i = from; i <= to; i++) {
+            int tmp = nums[i];
+            nums[i] = nums[to];
+            nums[to] = tmp;
+            to--;
         }
     }
 
