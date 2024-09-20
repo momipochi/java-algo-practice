@@ -5,6 +5,16 @@ package com.example.LeetCode.L79_wordsearch;
 // Given an m x n grid of characters board and a string word, return true if word exists in the grid.
 
 // The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
+
+/*
+ * Simple dfs algorithm. Run recursion once you find the index that matches the 0th index of the word,
+ * this way we avoid running for every index, as that is unnecessary. Our formal return condition is when
+ * the current word index reaches the word's length, this means that we have reached the end of the word,
+ * as there should be no possbility to continue if x y < 0 >= board.length used[x][y] and so on. We just need
+ * to run recursion again for all directions, if any returns true, we return true. Keep in mind to backtrack
+ * by marking used[x][y] as true and later false.
+ */
+
 public class WordSearch {
     char[] wordArr;
 
