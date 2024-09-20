@@ -14,23 +14,23 @@ public class NumberofIslands {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == '1') {
-                    dfs(i, j, grid);
                     res++;
+                    modifyIsland(i, j, grid);
                 }
             }
         }
         return res;
     }
 
-    private void dfs(int x, int y, char[][] grid) {
-        if (x < 0 || y < 0 || x >= grid.length || y >= grid[x].length || grid[x][y] != '1') {
+    private void modifyIsland(int x, int y, char[][] grid) {
+        if (x < 0 || y < 0 || x >= grid.length || y >= grid[x].length || grid[x][y] == '0') {
             return;
         }
         grid[x][y] = '0';
-        dfs(x + 1, y, grid);
-        dfs(x - 1, y, grid);
-        dfs(x, y + 1, grid);
-        dfs(x, y - 1, grid);
+        modifyIsland(x + 1, y, grid);
+        modifyIsland(x, y + 1, grid);
+        modifyIsland(x, y - 1, grid);
+        modifyIsland(x - 1, y, grid);
     }
 
 }
