@@ -116,8 +116,8 @@ public class CourseSchedule {
                 }
             }
         }
-        for (int r : req) {
-            if (r != 0) {
+        for (int i : req) {
+            if (i != 0) {
                 return false;
             }
         }
