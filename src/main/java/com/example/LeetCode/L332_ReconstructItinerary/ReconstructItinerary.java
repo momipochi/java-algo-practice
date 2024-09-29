@@ -23,23 +23,23 @@ public class ReconstructItinerary {
 
     public List<String> findItinerary(List<List<String>> tickets) {
         map = new HashMap<>();
-        for (int i = 0; i < tickets.size(); i++) {
-            map.putIfAbsent(tickets.get(i).get(0), new PriorityQueue<>());
-            map.get(tickets.get(i).get(0)).add(tickets.get(i).get(1));
+        for (List<String> t : tickets) {
+            map.putIfAbsent(t.get(0), new PriorityQueue<>());
+            map.get(t.get(0)).add(t.get(1));
         }
         res = new ArrayList<>();
-        solve("JFK");
+        solution("JFK");
         return new ArrayList<>(res);
     }
 
-    private void solve(String src) {
+    private void solution(String src) {
         PriorityQueue<String> q = map.get(src);
         if (q != null) {
             while (!q.isEmpty()) {
-                solve(q.poll());
+                solution(q.poll());
             }
         }
         res.add(0, src);
-
     }
+
 }
