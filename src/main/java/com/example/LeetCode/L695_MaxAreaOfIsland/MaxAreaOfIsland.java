@@ -16,23 +16,19 @@ public class MaxAreaOfIsland {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == 1) {
-                    max = Math.max(max, solution(i, j, 0, grid));
+                    max = Math.max(max, operate(i, j, grid));
                 }
             }
         }
         return max;
     }
 
-    private int solution(int i, int j, int sum, int[][] grid) {
-        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] != 1) {
-            return sum;
+    private int operate(int i, int j, int[][] grid) {
+        if (i < 0 || j < 0 || i >= grid.length || j >= grid[i].length || grid[i][j] == 0) {
+            return 0;
         }
         grid[i][j] = 0;
-        int tmp = sum + 1;
-        tmp = Math.max(tmp, solution(i + 1, j, tmp, grid));
-        tmp = Math.max(tmp, solution(i - 1, j, tmp, grid));
-        tmp = Math.max(tmp, solution(i, j + 1, tmp, grid));
-        tmp = Math.max(tmp, solution(i, j - 1, tmp, grid));
-        return tmp;
+        return 1 + operate(i + 1, j, grid) + operate(i - 1, j, grid) + operate(i, j + 1, grid)
+                + operate(i, j - 1, grid);
     }
 }
