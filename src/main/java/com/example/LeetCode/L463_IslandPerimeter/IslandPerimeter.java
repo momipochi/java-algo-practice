@@ -17,7 +17,7 @@ public class IslandPerimeter {
                     if (i < grid.length - 1 && grid[i + 1][j] == 1) {
                         neighbors++;
                     }
-                    if (j < grid[i].length && grid[i][j + 1] == 1) {
+                    if (j < grid[i].length - 1 && grid[i][j + 1] == 1) {
                         neighbors++;
                     }
                 }
