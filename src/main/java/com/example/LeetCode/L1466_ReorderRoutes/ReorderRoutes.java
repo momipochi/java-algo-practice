@@ -9,6 +9,11 @@ package com.example.LeetCode.L1466_ReorderRoutes;
  * the next number, meaning we can use the values of each point as an index to easily mark the element
  * in the boolean array as true, aka visited.
  * 
+ * When running recursive function, we check if the TO index is marked as true in the boolean array. If
+ * true, this means that FROM has also been visited and we can return early. If instead FROM was visited, this means that TO
+ * needs to be reordered. If neither are the case we need to run the search again recrusively for the next
+ * city.
+ * 
  * There are two important things to remember. First, it is possible that a point is reachable, hence
  * we return from the function early and never reach the recursion part of the function, meaning we will
  * not iterate through all points properly. The solution is to simply iterate from 0 to n (number of cities)
@@ -21,7 +26,7 @@ package com.example.LeetCode.L1466_ReorderRoutes;
 
 public class ReorderRoutes {
     boolean[] visited;
-    int count = 0;
+    int reorders = 0;
 
     public int minReorder(int n, int[][] connections) {
         visited = new boolean[n + 1];
@@ -29,11 +34,11 @@ public class ReorderRoutes {
         for (int i = 0; i < n; i++) {
             search(i, connections);
         }
-        return count;
+        return reorders;
     }
 
     private void search(int city, int[][] connections) {
-        if (city >= connections.length) {
+        if (city >= connections.length || city < 0) {
             return;
         }
         int from = connections[city][0], to = connections[city][1];
@@ -42,7 +47,7 @@ public class ReorderRoutes {
             return;
         }
         if (visited[from]) {
-            count++;
+            reorders++;
             visited[to] = true;
         } else {
             search(city + 1, connections);
@@ -51,10 +56,13 @@ public class ReorderRoutes {
                 return;
             }
             if (visited[from]) {
-                count++;
+                reorders++;
                 visited[to] = true;
+            } else {
+                search(city - 1, connections);
             }
         }
+
     }
 
 }
