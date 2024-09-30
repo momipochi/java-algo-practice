@@ -8,6 +8,9 @@ package com.example.LeetCode.L695_MaxAreaOfIsland;
  * this way we can, by design, prevent encountering the same 1s again.
  * 
  * All that needs to be done afterwards is to check for the previous maximum with the current maximum.
+ * 
+ * During dfs, we can just return 1+ recursion().... because if during dfs an end was reached, we would return 0
+ * so we are just adding to 0, and since each iteratin would start at 0, we just have to add 1 to the return value.
  */
 
 public class MaxAreaOfIsland {
