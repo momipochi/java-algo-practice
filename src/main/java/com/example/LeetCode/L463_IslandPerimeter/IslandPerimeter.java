@@ -3,7 +3,7 @@ package com.example.LeetCode.L463_IslandPerimeter;
 // https://leetcode.com/problems/island-perimeter/description/
 
 /*
- * For every 1 encountered is an island, check row+1 and col+1 for neighbors,
+ * For every 1 encountered is an island, check additionally [row+1][col] and [row][col+1] for neighbors,
  * in the end caculate it by island*4-neighbours*2
  */
 
