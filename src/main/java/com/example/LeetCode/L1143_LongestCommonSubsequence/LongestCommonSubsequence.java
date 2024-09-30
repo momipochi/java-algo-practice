@@ -20,7 +20,7 @@ public class LongestCommonSubsequence {
     public int longestCommonSubsequence(String text1, String text2) {
         char[] t1 = text1.toCharArray(), t2 = text2.toCharArray();
         int x = t1.length, y = t2.length;
-        int[][] grid = new int[x + 1][y + 1];
+        int[][] grid = new int[t1.length + 1][t2.length + 1];
         for (int i = x - 1; i >= 0; i--) {
             for (int j = y - 1; j >= 0; j--) {
                 if (t1[i] == t2[j]) {
