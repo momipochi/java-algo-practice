@@ -22,51 +22,48 @@ import java.util.Stack;
 
 public class ReorderRoutes {
     public int minReorder(int n, int[][] connections) {
-        boolean[] reach = new boolean[n];
-        int rows = connections.length;
-        reach[0] = true;
-        int count = 0;
+        boolean[] visited = new boolean[n];
+        int reorders = 0;
+        visited[0] = true;
 
         Stack<Integer> s1 = new Stack<>();
-        for (int i = 0; i < rows; i++) {
-            if (reach[connections[i][0]]) {
-                count++;
-                reach[connections[i][1]] = true;
-            } else if (reach[connections[i][1]]) {
-                reach[connections[i][0]] = true;
+        for (int i = 0; i < connections.length; i++) {
+            if (visited[connections[i][0]]) {
+                reorders++;
+                visited[connections[i][1]] = true;
+            } else if (visited[connections[i][1]]) {
+                visited[connections[i][0]] = true;
             } else {
                 s1.push(i);
             }
         }
 
         Stack<Integer> s2 = new Stack<>();
-
-        while (!s1.isEmpty() || !s2.isEmpty()) {
-            while (!s1.isEmpty()) {
+        while (!s1.empty() || !s2.empty()) {
+            while (!s1.empty()) {
                 int i = s1.pop();
-                if (reach[connections[i][0]]) {
-                    count++;
-                    reach[connections[i][1]] = true;
-                } else if (reach[connections[i][1]]) {
-                    reach[connections[i][0]] = true;
+                if (visited[connections[i][0]]) {
+                    reorders++;
+                    visited[connections[i][1]] = true;
+                } else if (visited[connections[i][1]]) {
+                    visited[connections[i][0]] = true;
                 } else {
-
                     s2.push(i);
                 }
-
             }
-
-            while (!s2.isEmpty()) {
+            while (!s2.empty()) {
                 int i = s2.pop();
-                if (reach[connections[i][0]]) {
-                    count++;
-                    reach[connections[i][1]] = true;
-                } else if (reach[connections[i][1]]) {
-                    reach[connections[i][0]] = true;
-                } else
+                if (visited[connections[i][0]]) {
+                    reorders++;
+                    visited[connections[i][1]] = true;
+                } else if (visited[connections[i][1]]) {
+                    visited[connections[i][0]] = true;
+                } else {
                     s1.push(i);
+                }
             }
         }
-        return count;
+
+        return reorders;
     }
 }
