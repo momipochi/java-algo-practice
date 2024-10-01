@@ -19,25 +19,30 @@ import java.util.List;
  */
 
 public class CombinationSum {
+    List<List<Integer>> res = new ArrayList<>();
+    int[] cands;
+    int tar;
+
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> res = new ArrayList<>();
-        solution(0, 0, target, candidates, new ArrayList<>(), res);
+        this.cands = candidates;
+        this.tar = target;
+        backtrack(0, 0, new ArrayList<>());
         return res;
     }
 
-    private void solution(int sum, int index, int target, int[] candidates, List<Integer> combinations,
-            List<List<Integer>> res) {
-        if (sum == target) {
-            res.add(new ArrayList<>(combinations));
+    private void backtrack(int sum, int index, List<Integer> combination) {
+        if (sum > tar || index >= cands.length) {
             return;
         }
-        if (index >= candidates.length || sum > target) {
+        if (sum == tar) {
+            res.add(new ArrayList<>(combination));
             return;
         }
 
-        combinations.add(candidates[index]);
-        solution(sum + candidates[index], index, target, candidates, combinations, res);
-        combinations.remove(combinations.size() - 1);
-        solution(sum, index + 1, target, candidates, combinations, res);
+        combination.add(cands[index]);
+        backtrack(sum + cands[index], index, combination);
+        combination.remove(combination.size() - 1);
+        backtrack(sum, index + 1, combination);
     }
+
 }
