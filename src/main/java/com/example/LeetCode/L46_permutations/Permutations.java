@@ -14,24 +14,32 @@ import java.util.List;
  */
 
 public class Permutations {
+    List<List<Integer>> res = new ArrayList<>();
+    int[] nums;
+    boolean[] picked;
+
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
-        solution(res, new ArrayList<>(), nums);
+        this.nums = nums;
+        picked = new boolean[nums.length];
+        backtrack(new ArrayList<>());
         return res;
     }
 
-    private void solution(List<List<Integer>> res, List<Integer> permutations, int[] nums) {
-        if (permutations.size() == nums.length) {
-            res.add(new ArrayList<>(permutations));
+    private void backtrack(List<Integer> perm) {
+        if (perm.size() == nums.length) {
+            res.add(new ArrayList<>(perm));
             return;
         }
         for (int i = 0; i < nums.length; i++) {
-            if (permutations.contains(nums[i])) {
+            if (picked[i]) {
                 continue;
             }
-            permutations.add(nums[i]);
-            solution(res, permutations, nums);
-            permutations.remove(permutations.size() - 1);
+            picked[i] = true;
+            perm.add(nums[i]);
+            backtrack(perm);
+            picked[i] = false;
+            perm.remove(perm.size() - 1);
         }
     }
+
 }
