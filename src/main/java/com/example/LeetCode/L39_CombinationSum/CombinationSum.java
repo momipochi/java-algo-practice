@@ -26,23 +26,23 @@ public class CombinationSum {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         this.cands = candidates;
         this.tar = target;
-        backtrack(0, 0, new ArrayList<>());
+        backtrack(new ArrayList<>(), 0, 0);
         return res;
     }
 
-    private void backtrack(int sum, int index, List<Integer> combination) {
-        if (sum > tar || index >= cands.length) {
-            return;
-        }
+    private void backtrack(List<Integer> combination, int sum, int index) {
         if (sum == tar) {
             res.add(new ArrayList<>(combination));
             return;
         }
+        if (sum > tar || index >= cands.length) {
+            return;
+        }
 
         combination.add(cands[index]);
-        backtrack(sum + cands[index], index, combination);
+        backtrack(combination, sum + cands[index], index);
         combination.remove(combination.size() - 1);
-        backtrack(sum, index + 1, combination);
+        backtrack(combination, sum, index + 1);
     }
 
 }
