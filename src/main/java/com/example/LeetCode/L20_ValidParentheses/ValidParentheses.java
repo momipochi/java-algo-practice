@@ -2,23 +2,26 @@ package com.example.LeetCode.L20_ValidParentheses;
 
 import java.util.Stack;
 
+// https://leetcode.com/problems/valid-parentheses/description/
+
 public class ValidParentheses {
     public boolean isValid(String s) {
-        char[] arr = s.toCharArray();
+        char[] strs = s.toCharArray();
         Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == '(' || arr[i] == '[' || arr[i] == '{') {
-                stack.push(arr[i]);
-            } else if (arr[i] == ')' || arr[i] == ']' || arr[i] == '}') {
+        for (int i = 0; i < strs.length; i++) {
+            char c = strs[i];
+            if (c == '[' || c == '(' || c == '{') {
+                stack.push(c);
+            } else {
                 if (stack.size() == 0) {
                     return false;
                 }
-                char c = stack.pop();
-                if (c == '(' && arr[i] != ')') {
+                char tmp = stack.pop();
+                if (tmp == '[' && c != ']') {
                     return false;
-                } else if (c == '[' && arr[i] != ']') {
+                } else if (tmp == '{' && c != '}') {
                     return false;
-                } else if (c == '{' && arr[i] != '}') {
+                } else if (tmp == '(' && c != ')') {
                     return false;
                 }
             }
