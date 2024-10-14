@@ -17,25 +17,24 @@ public class JumpGameII {
     public int jump(int[] nums) {
         int i = 0;
         while (i < nums.length - 1) {
-            i = search(i, nums[i], nums);
+            i = solve(nums, i, nums[i]);
         }
         return ans;
     }
 
-    private int search(int a, int b, int[] nums) {
+    private int solve(int[] nums, int a, int b) {
         ans++;
         if (a + b >= nums.length - 1) {
             return nums.length;
         }
-        int maxI = 0, max = 0;
+        int max = 0, pos = 0;
         for (int i = a; i <= a + b; i++) {
-            int tmp = i + nums[i];
-            if (tmp > max) {
-                max = tmp;
-                maxI = i;
+            int curr = nums[i] + i;
+            if (curr > max) {
+                max = curr;
+                pos = i;
             }
         }
-        return maxI;
+        return pos;
     }
-
 }

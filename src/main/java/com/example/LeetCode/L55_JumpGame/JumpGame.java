@@ -13,12 +13,12 @@ package com.example.LeetCode.L55_JumpGame;
 
 public class JumpGame {
     public boolean canJump(int[] nums) {
-        int max = 0;
+        int dis = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (i > max) {
+            if (i > dis) {
                 return false;
             }
-            max = Math.max(max, nums[i] + i);
+            dis = Math.max(dis, nums[i] + i);
         }
         return true;
     }
