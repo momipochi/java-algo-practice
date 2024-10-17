@@ -12,7 +12,7 @@ public class StringCompressionTest {
         char[] a = new char[] { 'a', '2', 'b', '2', 'c', '3' };
         assertEquals(6, sc.compress(c));
         for (int i = 0; i < a.length; i++) {
-            assertEquals(a[i], c[i]);
+            assertEquals(c[i], a[i]);
         }
     }
 }
