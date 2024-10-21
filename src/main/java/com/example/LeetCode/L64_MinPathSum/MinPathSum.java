@@ -14,24 +14,26 @@ package com.example.LeetCode.L64_MinPathSum;
  */
 
 public class MinPathSum {
-    int[][] tab;
+    int[][] dp;
     int[][] grid;
 
     public int minPathSum(int[][] grid) {
-        tab = new int[grid.length + 1][grid[0].length + 1];
         this.grid = grid;
+        dp = new int[grid.length + 1][grid[0].length + 1];
         return helper(grid.length - 1, grid[0].length - 1);
     }
 
     private int helper(int x, int y) {
         if (x == 0 && y == 0) {
-            return grid[x][y];
-        } else if (x < 0 || y < 0) {
-            return Integer.MAX_VALUE;
-        } else if (tab[x][y] != 0) {
-            return tab[x][y];
+            return grid[0][0];
         }
-        return tab[x][y] = grid[x][y] + Math.min(helper(x - 1, y), helper(x, y - 1));
+        if (x < 0 || y < 0) {
+            return Integer.MAX_VALUE;
+        }
+        if (dp[x][y] != 0) {
+            return dp[x][y];
+        }
+        return dp[x][y] = grid[x][y] + Math.min(helper(x, y - 1), helper(x - 1, y));
     }
 
     public int minPathSumFromZero(int[][] grid) {
