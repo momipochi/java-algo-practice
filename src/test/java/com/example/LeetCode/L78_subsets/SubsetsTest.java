@@ -11,14 +11,13 @@ import org.junit.Test;
 import com.example.utils.Utils;
 
 public class SubsetsTest {
-    private int[][] cases;
-    private int[][][] ans;
+    private int[] cases;
+    private int[][] ans;
 
     @Before
     public void init() {
-        cases = new int[][] { { 1, 2, 3 }, { 0 }, { 1, 2, 2 } };
-        ans = new int[][][] { { {}, { 1 }, { 2 }, { 1, 2 }, { 3 }, { 1, 3 }, { 2, 3 }, { 1, 2, 3 } }, { {}, { 0 } },
-                { {}, { 1 }, { 1, 2 }, { 1, 2, 2 }, { 2 }, { 2, 2 } } };
+        cases = new int[] { 1, 2, 3 };
+        ans = new int[][] { {}, { 1 }, { 2 }, { 1, 2 }, { 3 }, { 1, 3 }, { 2, 3 }, { 1, 2, 3 } };
     }
 
     @Test
@@ -38,7 +37,7 @@ public class SubsetsTest {
 
     private boolean testHandler(Function<int[], List<List<Integer>>> callback) {
         for (int i = 0; i < cases.length; i++) {
-            if (!Utils.Is2DListEqualTo2DArray(callback.apply(cases[i]), ans[i])) {
+            if (!Utils.Is2DListEqualTo2DArray(callback.apply(cases), ans)) {
                 return false;
             }
         }

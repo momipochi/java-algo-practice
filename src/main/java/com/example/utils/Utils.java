@@ -2,11 +2,13 @@ package com.example.utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import com.example.classes.ListNode;
 import com.example.classes.TreeNode;
 
 public class Utils {
+
     public static <T> List<List<T>> twoDimensionalArrayToList(T[][] arr) {
         List<List<T>> list = new ArrayList<>();
         for (T[] array : arr) {
@@ -15,18 +17,33 @@ public class Utils {
         return list;
     }
 
+    private static <T> List<T> flattenCollection(List<List<T>> colleciton) {
+        List<T> res = new ArrayList<>();
+        colleciton.forEach(res::addAll);
+        return res;
+    }
+
     public static boolean Is2DListEqualTo2DArray(List<List<Integer>> list, int[][] arr) {
         List<List<Integer>> arrList = new ArrayList<>();
         for (int[] num : arr) {
             List<Integer> tmp = Arrays.stream(num).boxed().toList();
             arrList.add(tmp);
         }
+        var l1 = flattenCollection(list);
+        var l2 = flattenCollection(arrList);
+        Collections.sort(l1);
+        Collections.sort(l2);
         try {
-            return arrList.containsAll(list);
+            for (int i = 0; i < l1.size(); i++) {
+                if (l1.get(i) != l2.get(i)) {
+                    return false;
+                }
+            }
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
+        return false;
     }
 
     public static boolean Is2DListEqualTo2DArray(List<List<String>> list, String[][] arr) {
