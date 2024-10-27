@@ -13,16 +13,18 @@ package com.example.LeetCode.L49_JumpGameII;
 public class JumpGameII {
 
     int ans = 0;
+    int[] nums;
 
     public int jump(int[] nums) {
         int i = 0;
+        this.nums = nums;
         while (i < nums.length - 1) {
-            i = solve(nums, i, nums[i]);
+            i = nextIndex(i, nums[i]);
         }
         return ans;
     }
 
-    private int solve(int[] nums, int a, int b) {
+    private int nextIndex(int a, int b) {
         ans++;
         if (a + b >= nums.length - 1) {
             return nums.length;
@@ -30,11 +32,12 @@ public class JumpGameII {
         int max = 0, pos = 0;
         for (int i = a; i <= a + b; i++) {
             int curr = nums[i] + i;
-            if (curr > max) {
+            if (max < curr) {
                 max = curr;
                 pos = i;
             }
         }
         return pos;
     }
+
 }
