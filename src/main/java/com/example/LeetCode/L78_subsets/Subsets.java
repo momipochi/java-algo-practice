@@ -30,9 +30,9 @@ public class Subsets {
         for (int i = 0; i < nums.length; i++) {
             int size = result.size();
             for (int j = 0; j < size; j++) {
-                List<Integer> subset = new ArrayList<>(result.get(j));
-                subset.add(nums[i]);
-                result.add(subset);
+                List<Integer> tmp = new ArrayList<>(result.get(j));
+                tmp.add(nums[i]);
+                result.add(tmp);
             }
         }
         return result;
