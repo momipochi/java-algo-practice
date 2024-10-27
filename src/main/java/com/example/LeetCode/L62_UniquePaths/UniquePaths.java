@@ -2,6 +2,7 @@ package com.example.LeetCode.L62_UniquePaths;
 
 import java.util.Arrays;
 
+// https://leetcode.com/problems/unique-paths/description/
 public class UniquePaths {
     public int uniquePaths(int m, int n) {
         int[][] dp = new int[m][n];
@@ -13,6 +14,6 @@ public class UniquePaths {
                 dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
             }
         }
-        return dp[dp.length - 1][dp[0].length - 1];
+        return dp[m - 1][n - 1];
     }
 }
