@@ -14,18 +14,18 @@ package com.example.LeetCode.L189_RotateArray;
 public class RotateArray {
     public void rotate(int[] nums, int k) {
         k %= nums.length;
-        reverse(0, nums.length - 1, nums);
-        reverse(0, k - 1, nums);
-        reverse(k, nums.length - 1, nums);
+        rot(nums, 0, nums.length - 1);
+        rot(nums, 0, k - 1);
+        rot(nums, k, nums.length - 1);
     }
 
-    private void reverse(int a, int b, int[] nums) {
-        while (a < b) {
-            int tmp = nums[b];
-            nums[b] = nums[a];
-            nums[a] = tmp;
-            a++;
-            b--;
+    private void rot(int[] nums, int start, int end) {
+        while (start < end) {
+            int tmp = nums[end];
+            nums[end] = nums[start];
+            nums[start] = tmp;
+            start++;
+            end--;
         }
     }
 
