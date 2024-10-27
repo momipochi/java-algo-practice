@@ -18,8 +18,8 @@ public class MinPathSum {
     int[][] grid;
 
     public int minPathSum(int[][] grid) {
+        dp = new int[grid.length][grid[0].length];
         this.grid = grid;
-        dp = new int[grid.length + 1][grid[0].length + 1];
         return helper(grid.length - 1, grid[0].length - 1);
     }
 
@@ -33,7 +33,7 @@ public class MinPathSum {
         if (dp[x][y] != 0) {
             return dp[x][y];
         }
-        return dp[x][y] = grid[x][y] + Math.min(helper(x, y - 1), helper(x - 1, y));
+        return dp[x][y] = grid[x][y] + Math.min(helper(x - 1, y), helper(x, y - 1));
     }
 
     public int minPathSumFromZero(int[][] grid) {
