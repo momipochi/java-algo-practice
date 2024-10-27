@@ -4,20 +4,23 @@ package com.example.LeetCode.L74_SearchAMatrix;
 public class SearchAMatrix {
     public boolean searchMatrix(int[][] matrix, int target) {
         for (int i = 0; i < matrix.length; i++) {
-            if (target > matrix[i][matrix[i].length - 1]) {
+            if (target > matrix[i][matrix[0].length - 1]) {
                 continue;
-            }
-            int l = 0, r = matrix[i].length - 1;
-            while (l <= r) {
-                int mid = (l + r) / 2;
-                if (target == matrix[i][mid]) {
-                    return true;
-                } else if (target < matrix[i][mid]) {
-                    r = mid - 1;
-                } else {
-                    l = mid + 1;
+            } else {
+                int l = 0, r = matrix[0].length - 1;
+                while (l <= r) {
+                    int m = (r + l) / 2;
+                    if (matrix[i][m] == target) {
+                        return true;
+                    } else if (matrix[i][m] > target) {
+                        r = m - 1;
+                    } else {
+                        l = m + 1;
+                    }
                 }
+                return false;
             }
+
         }
         return false;
     }
