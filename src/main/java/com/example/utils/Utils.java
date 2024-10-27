@@ -52,8 +52,17 @@ public class Utils {
             List<String> tmp = Arrays.stream(num).toList();
             arrList.add(tmp);
         }
+        var l1 = flattenCollection(list);
+        var l2 = flattenCollection(arrList);
+        Collections.sort(l1);
+        Collections.sort(l2);
         try {
-            return arrList.containsAll(list);
+            for (int i = 0; i < l1.size(); i++) {
+                if (!l1.get(i).equals(l2.get(i))) {
+                    return false;
+                }
+            }
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
