@@ -20,18 +20,17 @@ import java.util.List;
 public class MergeIntervals {
     public int[][] merge(int[][] intervals) {
         Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+        List<int[]> res = new ArrayList<>();
         int[] prev = intervals[0];
-        List<int[]> list = new ArrayList<>();
         for (int i = 1; i < intervals.length; i++) {
-            if (prev[1] < intervals[i][0]) {
-                list.add(prev);
+            if (intervals[i][0] > prev[1]) {
+                res.add(prev);
                 prev = intervals[i];
             } else {
-                prev[1] = prev[1] > intervals[i][1] ? prev[1] : intervals[i][1];
+                prev[1] = intervals[i][1] > prev[1] ? intervals[i][1] : prev[1];
             }
-
         }
-        list.add(prev);
-        return list.toArray(new int[list.size()][]);
+        res.add(prev);
+        return res.toArray(new int[res.size()][]);
     }
 }
