@@ -17,22 +17,26 @@ import java.util.List;
  */
 
 public class Combinations {
+    List<List<Integer>> res = new ArrayList<>();
+    int n;
+    int k;
+
     public List<List<Integer>> combine(int n, int k) {
-        List<List<Integer>> res = new ArrayList<>();
-        helper(1, n, k, new ArrayList<>(), res);
+        this.n = n;
+        this.k = k;
+        helper(new ArrayList<>(), 1);
         return res;
     }
 
-    private void helper(int start, int n, int k, List<Integer> comb, List<List<Integer>> res) {
-        if (comb.size() == k) {
-            res.add(new ArrayList<>(comb));
+    public void helper(List<Integer> combinations, int start) {
+        if (combinations.size() == k) {
+            res.add(new ArrayList<>(combinations));
             return;
         }
         for (int i = start; i <= n; i++) {
-            comb.add(i);
-            helper(i + 1, n, k, comb, res);
-            comb.remove(comb.size() - 1);
+            combinations.add(i);
+            helper(combinations, i + 1);
+            combinations.remove(combinations.size() - 1);
         }
     }
-
 }
