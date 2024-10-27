@@ -13,13 +13,13 @@ package com.example.LeetCode.L53_MaximumSubarray;
 
 public class MaximumSubarray {
     public int maxSubArray(int[] nums) {
-        int res = nums[0], max = nums[0];
+        int max = nums[0], sum = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            if (res < 0) {
-                res = 0;
+            if (sum < 0) {
+                sum = 0;
             }
-            res += nums[i];
-            max = Math.max(max, res);
+            sum += nums[i];
+            max = max > sum ? max : sum;
         }
         return max;
     }
