@@ -17,21 +17,24 @@ package com.example.LeetCode.L79_wordsearch;
 
 public class WordSearch {
     char[] wordArr;
+    char[][] board;
 
     public boolean exist(char[][] board, String word) {
+        this.board = board;
         wordArr = word.toCharArray();
         boolean[][] used = new boolean[board.length][board[0].length];
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j] == wordArr[0] && solution(i, j, 0, board, used)) {
+                if (board[i][j] == wordArr[0] && existsWord(used, 0, i, j)) {
                     return true;
                 }
             }
         }
+
         return false;
     }
 
-    private boolean solution(int x, int y, int charIndex, char[][] board, boolean[][] used) {
+    private boolean existsWord(boolean[][] used, int charIndex, int x, int y) {
         if (charIndex == wordArr.length) {
             return true;
         }
@@ -39,12 +42,12 @@ public class WordSearch {
                 || board[x][y] != wordArr[charIndex]) {
             return false;
         }
-        used[x][y] = true;
-        boolean res = solution(x + 1, y, charIndex + 1, board, used) ||
-                solution(x, y + 1, charIndex + 1, board, used) ||
-                solution(x, y - 1, charIndex + 1, board, used) ||
-                solution(x - 1, y, charIndex + 1, board, used);
 
+        used[x][y] = true;
+        boolean res = existsWord(used, charIndex + 1, x + 1, y) ||
+                existsWord(used, charIndex + 1, x - 1, y) ||
+                existsWord(used, charIndex + 1, x, y + 1) ||
+                existsWord(used, charIndex + 1, x, y - 1);
         used[x][y] = false;
         return res;
     }
