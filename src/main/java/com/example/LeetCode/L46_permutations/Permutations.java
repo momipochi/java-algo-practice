@@ -15,30 +15,31 @@ import java.util.List;
 
 public class Permutations {
     List<List<Integer>> res = new ArrayList<>();
-    boolean[] visited;
+    boolean[] used;
     int[] nums;
 
     public List<List<Integer>> permute(int[] nums) {
-        visited = new boolean[nums.length];
         this.nums = nums;
-        backtrack(new ArrayList<>());
+        used = new boolean[nums.length];
+        helper(new ArrayList<>());
         return res;
     }
 
-    private void backtrack(List<Integer> permutations) {
-        if (permutations.size() == nums.length) {
+    private void helper(List<Integer> permutations) {
+        if (permutations.size() == used.length) {
             res.add(new ArrayList<>(permutations));
             return;
         }
-        for (int i = 0; i < nums.length; i++) {
-            if (visited[i]) {
+
+        for (int i = 0; i < used.length; i++) {
+            if (used[i]) {
                 continue;
             }
             permutations.add(nums[i]);
-            visited[i] = true;
-            backtrack(permutations);
+            used[i] = true;
+            helper(permutations);
             permutations.remove(permutations.size() - 1);
-            visited[i] = false;
+            used[i] = false;
         }
     }
 
