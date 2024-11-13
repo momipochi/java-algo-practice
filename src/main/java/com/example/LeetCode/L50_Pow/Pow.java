@@ -17,7 +17,7 @@ public class Pow {
             }
 
             x *= x;
-            n >>>= 1;
+            n >>= 1;
 
         }
 

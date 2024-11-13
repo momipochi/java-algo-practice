@@ -2,8 +2,7 @@ package com.example.LeetCode.L20_ValidParentheses;
 
 import java.util.Stack;
 
-// https://leetcode.com/problems/valid-parentheses/description/
-
+// https://leetcode.com/problems/valid-parentheses/description/z
 public class ValidParentheses {
     public boolean isValid(String s) {
         char[] strs = s.toCharArray();
