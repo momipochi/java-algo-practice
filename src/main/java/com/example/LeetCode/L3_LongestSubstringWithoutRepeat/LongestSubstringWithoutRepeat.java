@@ -3,31 +3,29 @@ package com.example.LeetCode.L3_LongestSubstringWithoutRepeat;
 // https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
 
 public class LongestSubstringWithoutRepeat {
-    char[] c;
-    int l = 0;
-    int r = 0;
+    char[] strs;
+    int max = 0;
 
     public int lengthOfLongestSubstring(String s) {
-        int max = 0;
-        c = s.toCharArray();
-        while (r < c.length) {
-            int tmp = setNewLeft(c[r], l, r);
-            if (tmp != 0) {
-                l += tmp;
-                r++;
-            } else {
-                r++;
-            }
-            tmp = r - l;
-            max = max > tmp ? max : tmp;
+        strs = s.toCharArray();
+        if (strs.length == 1)
+            return 1;
+        int left = 0, right = left + 1;
+
+        while (strs.length > right) {
+            left += nextIndex(strs[right], left, right);
+            right++;
+            int tmp = right - left;
+            if (max < tmp)
+                max = tmp;
         }
-        return max;
+        return this.max;
     }
 
-    private int setNewLeft(char cr, int start, int end) {
+    public int nextIndex(char c, int start, int end) {
         int count = 1;
         for (int i = start; i < end; i++) {
-            if (cr == c[i]) {
+            if (c == strs[i]) {
                 return count;
             }
             count++;
